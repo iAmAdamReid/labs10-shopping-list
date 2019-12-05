@@ -5,13 +5,7 @@ import Auth0Lock from 'auth0-lock';
 import groceryBag from '../images/grocery-bag.jpg';
 import {MDBIcon, MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardHeader, MDBCardText, MDBCardFooter} from 'mdbreact';
 
-
-let frontendURL;
-if(process.env.NODE_ENV === 'development'){
-    frontendURL = 'http://localhost:3000';
-} else {
-    frontendURL = `https://labs10-shopping-list.netlify.com`
-}
+let frontendURL = process.env.REACT_APP_CALLBACK_URL || 'http://localhost:3000';
 
 var lockOptions = {
     auth: {
