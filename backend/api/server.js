@@ -28,22 +28,21 @@ const whitelist = ['https://shoptrak.app', 'https://www.shoptrak.app', 'www.shop
 //     }
 // }
 
-const corsOptionsDelegate = function(req, callback){
-    let corsOptions;
-    if(whitelist.indexOf(req.header('Origin')) !== -1){
-        corsOptions = {origin: true}
-    } else {
-        corsOptions = {origin: false,}
-    }
-    console.log('CORS ORIGIN', req.header('Origin'))
-    callback(null, corsOptions);
-}
+// const corsOptionsDelegate = function(req, callback){
+//     let corsOptions;
+//     if(whitelist.indexOf(req.header('Origin')) !== -1){
+//         corsOptions = {origin: true}
+//     } else {
+//         corsOptions = {origin: false,}
+//     }
+//     console.log('CORS ORIGIN', req.header('Origin'))
+//     callback(null, corsOptions);
+// }
 
 // CORS middleware, default cors() permits all cross-origin scripting, 
 // https://github.com/expressjs/cors
 // TODO: this will need to be configured in production
-server.use(cors(corsOptionsDelegate));
-
+server.use(cors());
 // initialize server to set content-type to application/json, allows us to easily pass JSON objects through endpoints
 server.use(express.json());
 server.use(bodyParser.urlencoded({
