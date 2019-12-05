@@ -7,13 +7,7 @@ import Auth0Lock from 'auth0-lock';
 
 import './Styles/Invite.css';
 
-
-let frontendURL;
-if(process.env.NODE_ENV === 'development'){
-    frontendURL = 'http://localhost:3000';
-} else {
-    frontendURL = `https://labs10-shopping-list.netlify.com`
-}
+let frontendURL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
 
 var lockOptions = {
     auth: {

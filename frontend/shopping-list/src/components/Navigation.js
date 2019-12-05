@@ -11,12 +11,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNav
     MDBDropdownToggle, MDBDropdownMenu,
     MDBBtn } from "mdbreact";
 
-let frontendURL;
-if(process.env.NODE_ENV === 'development'){
-    frontendURL = 'http://localhost:3000';
-} else {
-    frontendURL = `https://labs10-shopping-list.netlify.com`
-}
+let frontendURL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
 
 var lockOptions = {
     auth: {
