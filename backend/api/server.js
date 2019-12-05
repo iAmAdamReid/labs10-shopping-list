@@ -16,7 +16,7 @@ const apiRouter = require('../routes/apiRouter');
 
 // server.use(allowCrossDomain);
 
-const whitelist = ['https://shoptrak.app'];
+const whitelist = ['https://shoptrak.app', 'https://www.shoptrak.app', 'www.shoptrak.app', '*.shoptrak.app'];
 const corsOptions = {
     origin: function(origin, callback){
         if(whitelist.indexOf(origin) !== -1){
