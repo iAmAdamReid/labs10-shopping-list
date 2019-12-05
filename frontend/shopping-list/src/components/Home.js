@@ -5,7 +5,7 @@ import Auth0Lock from 'auth0-lock';
 import groceryBag from '../images/grocery-bag.jpg';
 import {MDBIcon, MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardHeader, MDBCardText, MDBCardFooter} from 'mdbreact';
 
-let frontendURL = process.env.REACT_APP_CALLBACK_URL || 'http://localhost:3000';
+let frontendURL = process.env.REACT_APP_FRONTEND_URL || 'http://localhost:3000';
 
 var lockOptions = {
     auth: {
