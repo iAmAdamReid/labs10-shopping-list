@@ -72,12 +72,7 @@ export const UPDATE_NOTIFICATION = 'UPDATE_NOTIFICATION';
 export const UPDATE_NOTIFICATION_SUCCESS = 'UPDATE_NOTIFICATION_SUCCESS';
 
 // Defines URL for development and production/staging environments
-let backendURL;
-if(process.env.NODE_ENV === 'development'){
-  backendURL = `http://localhost:9000`
-} else {
-  backendURL = `https://shoptrak-backend.herokuapp.com`
-}
+let backendURL = process.env.REACT_APP_BACKEND_URL || `http://localhost:9000`;
 
 /*
  * USER ACTIONS
