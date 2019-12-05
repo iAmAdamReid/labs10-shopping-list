@@ -6,25 +6,37 @@ const bodyParser = require('body-parser');
 const server = express();
 const apiRouter = require('../routes/apiRouter');
 
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+// var allowCrossDomain = function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-    next();
+//     next();
+// }
+
+// server.use(allowCrossDomain);
+
+const whitelist = ['https://shoptrak.app'];
+const corsOptions = {
+    origin: function(origin, callback){
+        if(whitelist.indexOf(origin) !== -1){
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }
-
-server.use(allowCrossDomain);
+// CORS middleware, default cors() permits all cross-origin scripting, 
+// https://github.com/expressjs/cors
+// TODO: this will need to be configured in production
+server.use(cors(corsOptions));
 
 // initialize server to set content-type to application/json, allows us to easily pass JSON objects through endpoints
 server.use(express.json());
 server.use(bodyParser.urlencoded({
     extended: true
 }));
-// CORS middleware, default cors() permits all cross-origin scripting, 
-// https://github.com/expressjs/cors
-// TODO: this will need to be configured in production
-server.use(cors());
+
 
 // Helmet middleware, helps to secure application via HTTP response headers
 // https://github.com/helmetjs/helmet
